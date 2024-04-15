@@ -1,17 +1,15 @@
 def solution(nums):
     answer = 0
-    temp = 0
+    cnt = 0
 
-    for i in range(len(nums)):
-        if nums[i] == 1:
-            temp += 1
-        elif nums[i] == 0:
-            if answer < temp:
-                answer = temp
-            temp = 0
+    for x in nums:
+        if x == 1:
+            cnt += 1
+        else:
+            answer = max(answer, cnt)
+            cnt = 0
     
-    if answer < temp:
-        answer = temp
+    answer = max(answer, cnt)
 
     return answer
 
