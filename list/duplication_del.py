@@ -1,10 +1,13 @@
+from collections import deque
 def solution(nums):
-    answer = []
-    for i in range(len(nums) - 1, -1, -1):
-        if nums[i] not in answer:
-            answer.append(nums[i])
+    answer = deque()
+    answer.appendleft(nums[0])
+
+    for i in range(1, len(nums)):
+        if nums[i - 1] != nums[i]:
+            answer.appendleft(nums[i])
     
-    return answer
+    return list(answer)
     
    
 print(solution([0, 1, 1, 1, 2, 2, 2, 3]))
