@@ -1,18 +1,11 @@
 def solution(nums, target):
-    answer = []
+    answer = [0] * 2
+    n = len(nums)
 
-    for i in range(len(nums) - 1):
-        for j in range(i + 1, len(nums)):
-            if nums[i] + nums[j] == target:           
-                answer.append(min(nums[i], nums[j]))
-                answer.append(max(nums[i], nums[j]))
-                break
-        
-        if len(nums) == 2:
-            break
-    
-    if len(answer) == 0:
-        answer = [0] * 2
+    for i in range(n - 1):
+        for j in range(i + 1, n):
+            if nums[i] + nums[j] == target:
+                return sorted([nums[i], nums[j]])
 
     return answer
         
