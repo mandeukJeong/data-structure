@@ -1,18 +1,12 @@
 from collections import deque
 
 def solution(nums, k):
-    dq = deque()
-    answer = []
+    answer = deque(nums)
     
     for i in range(k):
-        dq.append(nums[i])
+        answer.append(answer.popleft())
     
-    for i in range(len(nums) - 1, k - 1, -1):
-        dq.appendleft(nums[i])
-
-    answer = list(dq)
-    
-    return answer
+    return list(answer)
 
 
 print(solution([3, 7, 1, 5, 9, 2, 8], 3))
