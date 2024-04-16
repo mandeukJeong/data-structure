@@ -1,13 +1,13 @@
 def solution(sticks):
-    print(sticks)
-    answer = []
+    answer = 1
+    maxN = sticks[-1]
 
-    for i in range(len(sticks) - 1):
-        if sticks[i] > sticks[len(sticks) - 1] and sticks[i] not in answer:
-            answer.append(sticks[i])
-   
-    return len(answer) + 1
-
+    for i in range(len(sticks) - 2, -1, -1):
+        if sticks[i] > maxN:
+            maxN = sticks[i]
+            answer += 1
+    
+    return answer
 
 n = int(input())
 arr = []
