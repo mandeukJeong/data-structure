@@ -1,17 +1,13 @@
 from collections import Counter
 def solution(nums):
-    answer = -1
-    minN = 1000001
-    cnt = Counter(nums)
+    answer = 1000000000
+    nH = Counter(nums)
 
-    for key in cnt:
-        if cnt[key] == key:
-            minN = min(minN, key)
+    for key in nH:
+        if nH[key] == key:
+            answer = min(answer, key)
 
-    if minN == 1000001:
-        return answer
-    else:
-        return minN
+    return -1 if answer == 1000000000 else answer
                           
 print(solution([1, 2, 3, 1, 3, 3, 2, 4]))
 print(solution([1, 2, 3, 3, 3, 2, 4, 5, 5, 5]))
