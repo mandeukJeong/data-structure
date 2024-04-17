@@ -1,21 +1,16 @@
 from collections import Counter
 def solution(s):
-    answer = False
-    cnt = Counter(s)
+    sH = Counter(s)
     odd = 0
-    even = 0
-    
-    for key in cnt:
-        if cnt[key] % 2 == 0:
-            even += 1
-        else:
+
+    for key in sH:
+        if sH[key] % 2 == 1:
             odd += 1
 
-    return answer if odd != 1 else not answer
+    return odd <= 1
                       
 print(solution("abacbaa"))
 print(solution("abaaceeffkckbaa"))
 print(solution("abcabbcc"))
 print(solution("sgsgsgabaaaecececekefefkccckbsgaaffsgsg"))
 print(solution("aabcefagcefbcabbcc"))
-
