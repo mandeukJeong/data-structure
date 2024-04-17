@@ -1,11 +1,14 @@
-from collections import defaultdict, Counter
+from collections import defaultdict
 def solution(nums):
     answer = -1
-    cnt = Counter(nums)
+    nH = defaultdict(int)
 
-    for key in cnt:
-        if cnt[key] == 1 and key > answer:
-            answer = key
+    for x in nums:
+        nH[x] += 1
+    
+    for key in nH:
+        if nH[key] == 1:
+            answer = max(answer, key)
  
     return answer
                             
