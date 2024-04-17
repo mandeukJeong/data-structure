@@ -1,10 +1,7 @@
-from collections import defaultdict
+from collections import Counter
 def solution(nums):
     answer = -1
-    nH = defaultdict(int)
-
-    for x in nums:
-        nH[x] += 1
+    nH = Counter(nums)
     
     for key in nH:
         if nH[key] == 1:
