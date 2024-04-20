@@ -1,19 +1,18 @@
 from collections import defaultdict
 def solution(n, m, name):
     answer = []
-    nH = defaultdict(int)
-    cnt = 0
+    sH = defaultdict(int)
 
-    for i in range(n + m):
-        if i >= n and name[i] in nH:
-            cnt += 1
-            answer.append(name[i])
-        nH[name[i]] += 1
-
-    sorted(answer)
-    print(cnt)
-    for i in range(len(answer)):
-        print(answer[i])
+    for x in name:
+        sH[x] += 1
+    
+    for key in sH:
+        if sH[key] == 2:
+            answer.append(key)
+    
+    print(len(answer))
+    for x in sorted(answer):
+        print(x)
     
 arr = []
 n, m = map(int, input().split())
