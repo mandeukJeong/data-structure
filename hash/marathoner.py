@@ -1,22 +1,16 @@
 from collections import defaultdict, Counter
 def solution(participant, completion):
     answer = ''
-    sH = defaultdict(int)
-
-    for x in participant:
-        sH[x] += 1
+    sH = Counter(participant)
 
     for x in completion:
-        sH[x] += 1
-
-    sH = Counter(sH)
+        sH[x] -= 1
 
     for key in sH:
-        if sH[key] % 2 != 0:
-            answer = key
-            
-    return answer
+        if sH[key] == 1:
+            return key
 
+    return answer
 
 n = int(input())
 a = []
