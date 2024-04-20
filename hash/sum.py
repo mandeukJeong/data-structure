@@ -1,16 +1,17 @@
 from collections import defaultdict
 def solution(nums, target):
     answer = [0]*2
-    nH = defaultdict(int)
+    cnt = defaultdict(int)
+
     for x in nums:
-        y = target - x
-        if y in nH:
-            return sorted([x, y])
-        nH[x] = 1
-        
-    return answer
-    
-                            
+        cnt[x] = target - x
+
+    for key in cnt:
+        if cnt[key] in nums and key != cnt[key]:
+            answer = [min(key, cnt[key]), max(key, cnt[key])]
+            return answer
+
+    return answer               
                 
 print(solution([3, 7, 2, 12, 9, 15, 8], 12))
 print(solution([21, 12, 30, 15, 6, 2, 9, 19, 14], 24))
