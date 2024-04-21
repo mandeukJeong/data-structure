@@ -3,23 +3,19 @@ def solution(moves):
     dx = [-1, 0, 1, 0]
     dy = [0, 1, 0, -1]
 
-    for sH in moves:
-        if sH == 'U':
-            nx = x + dx[0]
-            ny = y + dy[0]
-        elif sH == 'R':
-            nx = x + dx[1]
-            ny = y + dy[1]
-        elif sH == 'L':
-            nx = x + dx[3]
-            ny = y + dy[3]
-        else:
-            nx = x + dx[2]
-            ny = y + dy[2]
-
-        if nx >= 0 and nx < 100 and ny >= 0 and ny < 100:
-            x = nx
-            y = ny
+    for c in moves:
+        if c == 'U':
+            x = x + dx[0]
+            y = y + dy[0]
+        elif c == 'R':
+            x = x + dx[1]
+            y = y + dy[1]
+        elif c == 'D':
+            x = x + dx[2]
+            y = y + dy[2]
+        elif c == 'L':
+            x = x + dx[3]
+            y = y + dy[3]
     
     return [x, y]
                             
