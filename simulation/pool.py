@@ -1,18 +1,24 @@
 def solution(nums):
     answer = 0
-    n = len(nums)
+    
     dx = [-1, 0, 1, 0]
     dy = [0, 1, 0, -1]
-    for i in range(n):
-        for j in range(n):
-            flag = True
+
+    for i in range(len(nums)):
+        for j in range(len(nums)):
+            cnt = 0
+
             for k in range(4):
                 nx = i + dx[k]
                 ny = j + dy[k]
-                if nx >= 0 and nx < n and ny >= 0 and ny < n and nums[i][j] >= nums[nx][ny]:
-                    flag = False
-                    break
-            if flag == True:
+
+                if nx < 0 or nx == len(nums) or ny < 0 or ny == len(nums):
+                    cnt += 1
+                else:
+                    if nums[nx][ny] > nums[i][j]:
+                        cnt += 1
+                
+            if cnt == 4:
                 answer += 1
 
     return answer
