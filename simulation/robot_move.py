@@ -1,16 +1,17 @@
 def solution(moves):
+    x = y = 0
+    tmp = 1
     dx = [-1, 0, 1, 0]
     dy = [0, 1, 0, -1]
-    x = y = 0
-    d = 1
+
     for c in moves:
         if c == 'G':
-            x = x + dx[d]
-            y = y + dy[d]
-        elif c == 'R':
-            d = (d + 1) % 4
+            x = x + dx[tmp]
+            y = y + dy[tmp]
         elif c == 'L':
-            d = (d - 1) % 4
+            tmp = (tmp - 1) % 4
+        else:
+            tmp = (tmp + 1) % 4
 
     return [x, y]
                       
