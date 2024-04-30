@@ -1,18 +1,26 @@
 def solution(board):
     answer = 0
-    dx=[-1, -1, 0, 1, 1, 1, 0, -1]
-    dy=[0, 1, 1, 1, 0, -1, -1, -1]
-    n = len(board)
-    for i in range(n):
-        for j in range(n):
+    x = y = 0
+    dx = [-1, -1, 0, 1, 1, 1, 0, -1]
+    dy = [0, 1, 1, 1, 0, -1, -1, -1]
+    tmp1 = []
+    tmp2 = []
+
+    for i in range(len(board)):
+        for j in range(len(board)):
             if board[i][j] == 1:
-                for k in range(8):
-                    nx = i + dx[k]
-                    ny = j + dy[k]
-                    if nx >= 0 and nx < n and ny >= 0 and ny < n and board[nx][ny] == 0:
-                        answer += 1
-                        board[nx][ny] = 2
-    
+                tmp1.append([i, j])
+
+    for i in tmp1:
+        for j in range(8):
+            nx = i[0] + dx[j]
+            ny = i[1] + dy[j]
+
+            if nx >= 0 and nx < len(board) and ny >= 0 and ny < len(board) and board[nx][ny] != 1:
+                tmp2.append((nx, ny))     
+
+    answer = len(set(tmp2))
+
     return answer
                        
 print(solution([[0, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]))
