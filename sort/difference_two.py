@@ -2,18 +2,16 @@ def solution(nums):
     answer = []
     n = len(nums)
     minN = 1000000000
-    for i in range(n):
-        for j in range(i+1, n):
-            diff = abs(nums[i] - nums[j])
-            if diff < minN:
-                minN = diff
+    nums.sort()
+    for i in range(1, n):
+        diff = nums[i] - nums[i-1]
+        minN = min(minN, diff)
 
-    for i in range(n):
-        for j in range(i+1, n):
-            diff = abs(nums[i] - nums[j])
-            if diff == minN:
-                answer.append(sorted([nums[i], nums[j]]))
-                
+    for i in range(1, n):
+        diff = nums[i] - nums[i-1]
+        if diff == minN:
+            answer.append([nums[i-1], nums[i]])
+             
     return answer
 
 print(solution([3, 8, 1, 5, 12]))
