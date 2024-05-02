@@ -1,21 +1,23 @@
-def solution(nums):
-    answer = []
-    n = len(nums)
-    minN = 1000000000
+def solution(nums, target):
+    answer = [0]*2
     nums.sort()
-    for i in range(1, n):
-        diff = nums[i] - nums[i-1]
-        minN = min(minN, diff)
-
-    for i in range(1, n):
-        diff = nums[i] - nums[i-1]
-        if diff == minN:
-            answer.append([nums[i-1], nums[i]])
-             
+    left = 0
+    right = len(nums) - 1
+    while left < right:
+        sumN = nums[left] + nums[right]
+        if sumN == target:
+            return [nums[left], nums[right]]
+        if sumN < target:
+            left += 1
+        else:
+            right -= 1
+            
     return answer
-
-print(solution([3, 8, 1, 5, 12]))
-print(solution([2, 1, 3, 5, 4]))
-print(solution([5, 10, 15, 20, 25, 11]))
-print(solution([2, 4, 3, 1, 5, 7, 8, 12, 13, 15, 23]))
-print(solution([100, 200, 300, 400, 120, 130, 135, 132, 121]))
+    
+                                        
+print(solution([3, 7, 2, 12, 9, 15, 8, 11], 12))
+print(solution([21, 12, 30, 15, 6, 2, 9, 19, 14], 24))
+print(solution([12, 18, 5, 8, 21, 27, 22, 25, 16, 2], 28))
+print(solution([11, 17, 6, 8, 21, 9, 19, 12, 25, 16, 2], 26))
+print(solution([7, 5, 12, -9, -12, 22, -30, -35, -21], -14))
+print(solution([7, 5, 12, 20], 15))
