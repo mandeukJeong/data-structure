@@ -1,11 +1,17 @@
 def solution(nums, target):
     answer = [0] * 2
     nums.sort()
+    left = 0
+    right = len(nums) - 1
 
-    for x in nums:
-        if target - x in nums:
-            answer = [x, target - x]
-            break
+    while left < right:
+        sumN = nums[left] + nums[right]
+        if sumN == target:
+            return [nums[left], nums[right]]
+        if sumN < target:
+            left += 1
+        else:
+            right -= 1
         
     return answer
                                   
