@@ -1,12 +1,15 @@
 def solution(weight, limit):
     answer = 0
-    sumW = 0
+    cnt = 0
     weight.sort()
+    
     for x in weight:
-        if sumW + x > limit:
+        sumN = cnt + x
+        if sumN <= limit:
+            cnt = sumN
+            answer += 1
+        else:
             break
-        sumW += x
-        answer += 1
         
     return answer
                                            
