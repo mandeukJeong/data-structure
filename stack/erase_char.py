@@ -1,12 +1,22 @@
 def solution(s):
+    answer = ""
     stack = []
+    tmp = ""
+
     for x in s:
-        if stack and stack[-1] == x:
+        if x == tmp:
             stack.pop()
+            if len(stack) > 0:
+                tmp = stack[len(stack) - 1]
+            else:
+                tmp = ""
         else:
             stack.append(x)
+            tmp = x
+
+    answer = ''.join(stack)
             
-    return "".join(stack)
+    return answer
 
 print(solution("acbbcaa"))
 print(solution("bacccaba"))
