@@ -1,13 +1,20 @@
 from collections import deque
 def solution(nums):
-    queue = deque(nums)
-    while queue:
-        for _ in range(2):
-            if len(queue) > 1:
-                queue.popleft()
-        queue.append(queue.popleft())
-        if len(queue) == 1:
-            return queue[0]
+    tmp = 0
+    dq = deque()
+
+    for x in nums:
+        dq.append(x)
+    
+    while True:
+        if len(dq) == 1:
+            return dq[0]
+        if tmp < 2:
+            dq.popleft()
+            tmp += 1
+        else:
+            dq.append(dq.popleft())
+            tmp = 0
             
 print(solution([3, 1, 4, 5, 2, 6, 7]))
 print(solution([10, 8, 3, 1, 4, 5, 2, 6, 7, 9]))
